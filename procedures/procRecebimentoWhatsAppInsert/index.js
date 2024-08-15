@@ -86,13 +86,13 @@ export default async function procRecebimentoWhatsAppInsert(plugzapiResponse, lo
       .input('ChatNome', sql.VarChar(200), plugzapiResponse.chatName)
       .input('RemetenteFoto', sql.VarChar(200), plugzapiResponse.senderPhoto)
       .input('RemetenteNome', sql.VarChar(200), plugzapiResponse.senderName)
-      .input('ParticipanteTelefone', sql.VarChar(15), plugzapiResponse.participantPhone)
+      .input('ParticipanteTelefone', sql.VarChar(15), plugzapiResponse.participantPhone || plugzapiResponse.phone)
       .input('Foto', sql.VarChar(200), plugzapiResponse.photo)
       .input('bitBroadcast', sql.Bit, plugzapiResponse.broadcast)
       .input('isGroup', sql.Bit, plugzapiResponse.isGroup)
       .input('Tipo', sql.VarChar(20), plugzapiResponse.type)
       .input('TipoMensagemId', sql.Int, type)
-      .input('Mensagem', sql.VarChar(sql.MAX), msg)
+      .input('Mensagem', sql.NVarChar(sql.MAX), msg)
       .execute('ERPGlobal.Logs.procRecebimentoWhatsAppInsert');
     
     logger.info(result);

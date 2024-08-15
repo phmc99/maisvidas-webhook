@@ -5,8 +5,8 @@ export default async function procRecebimentoWhatsAppListaOpcaoInsert(Recebiment
     let result = await pool.request()
       .input('RecebimentoWhatsappId', sql.BigInt, RecebimentoWhatsappId)
       .input('Selecao', sql.Int, plugzapiResponse.listResponseMessage.selectedRowId)
-      .input('Mensagem', sql.VarChar(sql.MAX), plugzapiResponse.listResponseMessage.message)
-      .input('Titulo', sql.VarChar(500), plugzapiResponse.listResponseMessage.title)
+      .input('Mensagem', sql.NVarChar(sql.MAX), plugzapiResponse.listResponseMessage.message)
+      .input('Titulo', sql.NVarChar(500), plugzapiResponse.listResponseMessage.title)
       .execute('ERPGlobal.Logs.procRecebimentoWhatsAppListaOpcaoInsert');
     
     logger.info(result);

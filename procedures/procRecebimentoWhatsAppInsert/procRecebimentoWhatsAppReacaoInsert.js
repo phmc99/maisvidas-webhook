@@ -4,7 +4,7 @@ export default async function procRecebimentoWhatsAppReacaoInsert(RecebimentoWha
   try {
     let result = await pool.request()
       .input('RecebimentoWhatsappId', sql.BigInt, RecebimentoWhatsappId)
-      .input('Valor', sql.VarChar(100), plugzapiResponse.reaction.value)
+      .input('Valor', sql.NVarChar(100), plugzapiResponse.reaction.value)
       .input('DataHora', sql.DateTime, new Date(plugzapiResponse.reaction.time))
       .input('ReferenciaMensagemId', sql.VarChar(100), plugzapiResponse.reaction.referencedMessage.messageId)
       .input('ReferenciaFromMe', sql.Bit, plugzapiResponse.reaction.referencedMessage.fromMe)

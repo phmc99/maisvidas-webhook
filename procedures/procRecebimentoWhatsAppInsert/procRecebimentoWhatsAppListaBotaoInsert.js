@@ -5,7 +5,7 @@ export default async function procRecebimentoWhatsAppListaBotaoInsert(Recebiment
     let result = await pool.request()
       .input('RecebimentoWhatsappId', sql.BigInt, RecebimentoWhatsappId)
       .input('BotaoId', sql.Int, plugzapiResponse.buttonsResponseMessage.buttonId)
-      .input('Mensagem', sql.VarChar(sql.MAX), plugzapiResponse.buttonsResponseMessage.message)
+      .input('Mensagem', sql.NVarChar(sql.MAX), plugzapiResponse.buttonsResponseMessage.message)
       .execute('ERPGlobal.Logs.procRecebimentoWhatsAppListaBotaoInsert');
     
     logger.info(result);
